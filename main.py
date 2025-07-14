@@ -1,6 +1,5 @@
 import pandas as pd
 from fastapi import FastAPI
-import os
 
 app = FastAPI()
 csv_path = "C:/Users/devid/Downloads/Course Recoomendation System/output/processed_videos.csv"
@@ -9,9 +8,8 @@ df = None
 @app.on_event("startup")
 def load_data():
     global df
-    if os.path.exists(csv_path):
-        df = pd.read_csv(csv_path)
-        df['keywords'] = df['keywords'].astype(str)
+    df = pd.read_csv(csv_path)
+    df['keywords'] = df['keywords'].astype(str)
 
 @app.get("/search/")
 def search_videos(keyword: str):

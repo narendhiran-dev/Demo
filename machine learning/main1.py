@@ -1,6 +1,6 @@
 import pandas as pd
 import re 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 
 app = FastAPI()
 
